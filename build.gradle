@@ -16,8 +16,21 @@ dependencies {
     testImplementation'io.appium:java-client:8.5.1'
     // https://mvnrepository.com/artifact/org.testng/testng
     testImplementation 'org.testng:testng:7.8.0'
+
+    testImplementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
+    // FileUtils.copyFile
+    testImplementation 'commons-io:commons-io:2.11.0'
+    //Extent Report
+    // https://mvnrepository.com/artifact/com.aventstack/extentreports
+    testImplementation 'com.aventstack:extentreports:5.1.0'
 }
 
 test {
-    useTestNG()
+    useTestNG(){
+        if (project.hasProperty('testng.suites')) {
+            project.property('testng.suites').toString().split(',').each { suite ->
+                suites 'src/test/resources/' + suite + '-suite.xml'
+            }
+        }
+    }
 }
