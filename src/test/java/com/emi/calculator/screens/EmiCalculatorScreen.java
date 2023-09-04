@@ -2,6 +2,7 @@ package com.emi.calculator.screens;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class EmiCalculatorScreen extends BaseScreen{
     private By btnDetail =By.id("btnDetail");
@@ -9,30 +10,40 @@ public class EmiCalculatorScreen extends BaseScreen{
         super(driver);
     }
     public EmiCalculatorScreen fillAmount(int amount){
-        getWebElement(By.id("etLoanAmount")).sendKeys(String.valueOf(amount));
+        WebElement etLoanAmount =getWebElement(By.id("etLoanAmount"));
+        etLoanAmount.clear();
+        etLoanAmount.sendKeys(String.valueOf(amount));
         return this;
     }
     public EmiCalculatorScreen fillInterest(int InterestRate){
-        getWebElement(By.id("etInterest")).sendKeys(String.valueOf(InterestRate));
+        WebElement etInterest =  getWebElement(By.id("etInterest"));
+        etInterest.clear();
+       etInterest.sendKeys(String.valueOf(InterestRate));
         return this;
     }
     public EmiCalculatorScreen fillYear(int Year){
-        getWebElement(By.id("etYears")).sendKeys(String.valueOf(Year));
+        WebElement etYears = getWebElement(By.id("etYears"));
+        etYears.clear();
+        etYears.sendKeys(String.valueOf(Year));
         return this;
     }
     public EmiCalculatorScreen fillMonth(int Month){
-        getWebElement(By.id("etMonths")).sendKeys(String.valueOf(Month));
+        WebElement etMonths = getWebElement(By.id("etMonths"));
+        etMonths.clear();
+        etMonths.sendKeys(String.valueOf(Month));
         return this;
     }
     public EmiCalculatorScreen fillProcessFee(int ProcessFee){
-        getWebElement(By.id("etFee")).sendKeys(String.valueOf(ProcessFee));
+        WebElement etFee = getWebElement(By.id("etFee"));
+        etFee.clear();
+        etFee.sendKeys(String.valueOf(ProcessFee));
         return this;
     }
     public EmiCalculatorScreen tapOnCalculateBtn(){
         getWebElement(By.id("btnCalculate")).click();
         return this;
     }
-    public EmiCalculatorScreen tapOnResestBtn(){
+    public EmiCalculatorScreen tapOnResetBtn(){
         getWebElement(By.id("btnReset")).click();
         return this;
     }
